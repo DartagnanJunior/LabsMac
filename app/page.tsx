@@ -1,20 +1,20 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import {
   Atom,
-  Beaker,
   FlaskConical,
   GraduationCap,
   Leaf,
   Microscope,
   Sparkles,
-  TestTube,
-  Users
+  Users,
+  Zap
 } from "lucide-react";
 import Link from "next/link";
 
 export default function Home() {
-  // Mock data for articles - replace with real data later
+  // Mock data for articles - replace with real data laterß
   const recentArticles = [
     {
       id: 1,
@@ -68,27 +68,40 @@ export default function Home() {
   return (
     <div className="pt-16 min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-primary/90 to-accent text-primary-foreground py-20 lg:py-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center space-y-8">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold">
-              Bem-vindo ao LabSMaC
+      <section className="relative overflow-hidden bg-background py-14 lg:py-20">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-5xl mx-auto text-center space-y-8">
+
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight animate-fade-in-up">
+              <span className="bg-linear-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+                LabSMaC
+              </span>
             </h1>
-            <p className="text-xl md:text-2xl font-light opacity-90">
-              Laboratório de Síntese de Materiais Cerâmicos e Caracterização de Materiais
+
+            <p className="text-2xl md:text-3xl font-light text-foreground animate-fade-in-up delay-100">
+              Laboratório de Síntese de Materiais Cerâmicos
             </p>
-            <p className="text-lg md:text-xl opacity-80 max-w-3xl mx-auto leading-relaxed">
+
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed animate-fade-in-up delay-200">
               Liderando pesquisa e inovação em materiais avançados, com foco em
               aplicações biomédicas, biotecnológicas e biocombustíveis na UFCG.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button size="lg" variant="secondary" asChild>
-                <Link href="/services">Explorar Serviços</Link>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center pt-6 animate-fade-in-up delay-300">
+              <Button
+                size="lg"
+                className="group hover:scale-105 transition-transform shadow-lg hover:shadow-xl bg-primary text-primary-foreground"
+                asChild
+              >
+                <Link href="/services" className="flex items-center gap-2">
+                  Explorar Serviços
+                  <Zap className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
               </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
+                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all shadow-lg hover:shadow-xl"
                 asChild
               >
                 <Link href="/contact">Entre em Contato</Link>
@@ -99,29 +112,30 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="relative py-10 lg:py-14 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-              Nossos Serviços
-            </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Oferecemos infraestrutura completa para síntese, processamento e caracterização de materiais cerâmicos
-            </p>
-          </div>
+          
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {services.map((service, index) => {
               const Icon = service.icon;
               return (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary mb-4">
-                      <Icon className="w-8 h-8" />
+                <Card
+                  key={index}
+                  className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/50 bg-card/50 backdrop-blur-sm"
+                >
+                  {/* Gradient overlay on hover */}
+                  <div className="absolute inset-0 bg-linear-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  <CardHeader className="relative">
+                    <div className="w-14 h-14 bg-linear-to-br from-primary to-accent/80 rounded-xl flex items-center justify-center text-primary-foreground mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                      <Icon className="w-7 h-7" />
                     </div>
-                    <CardTitle className="text-xl">{service.title}</CardTitle>
+                    <CardTitle className="text-xl font-bold group-hover:text-primary transition-colors">
+                      {service.title}
+                    </CardTitle>
                   </CardHeader>
-                  <CardContent>
+                  <CardContent className="relative">
                     <CardDescription className="text-sm leading-relaxed">
                       {service.description}
                     </CardDescription>
@@ -131,72 +145,143 @@ export default function Home() {
             })}
           </div>
 
-          <div className="text-center mt-10">
-            <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
-              <Link href="/services">Ver Todos os Serviços</Link>
+          <div className="text-center mt-16">
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+              Oferecemos infraestrutura completa para síntese, processamento e caracterização de materiais cerâmicos com tecnologia de ponta
+            </p>
+          </div>
+
+          <div className="text-center mt-12">
+            <Button
+              variant="outline"
+              size="lg"
+              className="group border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+              asChild
+            >
+              <Link href="/services" className="flex items-center gap-2">
+                Ver Todos os Serviços
+                <Sparkles className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              </Link>
             </Button>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-background">
+      <section className="relative py-10 lg:py-14 bg-background overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-primary via-primary/90 to-accent rounded-2xl p-12 text-primary-foreground text-center">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Pronto para Colaborar?
-            </h2>
-            <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
-              Junte-se a nós no avanço da pesquisa em materiais cerâmicos. Entre em contato para discutir
-              seu projeto ou necessidades de pesquisa.
-            </p>
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/contact">Entre em Contato</Link>
-            </Button>
+          <div className="relative overflow-hidden bg-linear-to-r from-primary via-primary/90 to-accent rounded-3xl p-12 lg:p-16 text-primary-foreground text-center shadow-2xl">
+            {/* Animated background pattern */}
+            <div className="absolute inset-0 opacity-10">
+              <div className="absolute top-0 left-1/4 w-72 h-72 bg-secondary rounded-full blur-3xl animate-pulse"></div>
+              <div className="absolute bottom-0 right-1/4 w-72 h-72 bg-accent rounded-full blur-3xl animate-pulse delay-1000"></div>
+            </div>
+
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-foreground/10 backdrop-blur-sm rounded-full border border-primary-foreground/20 mb-6">
+                <Zap className="w-4 h-4" />
+                <span className="text-sm font-medium">Colaboração Científica</span>
+              </div>
+
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Pronto para Colaborar?
+              </h2>
+              <p className="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-95 leading-relaxed">
+                Junte-se a nós no avanço da pesquisa em materiais cerâmicos. Entre em contato para discutir
+                seu projeto ou necessidades de pesquisa e explore as possibilidades de colaboração.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  variant="secondary"
+                  className="hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+                  asChild
+                >
+                  <Link href="/contact" className="text-lg px-8">
+                    Entre em Contato
+                  </Link>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+                  asChild
+                >
+                  <Link href="/about" className="text-lg px-8">
+                    Conheça Nossa Equipe
+                  </Link>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Latest Articles Section */}
-      <section className="py-16 bg-muted/30">
+      <section className="relative py-10 lg:py-14 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-16">
             <div>
-              <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-3">
                 Últimas Publicações
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-lg text-muted-foreground">
                 Mantenha-se atualizado com nossas descobertas mais recentes
               </p>
             </div>
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground" asChild>
+            <Button
+              variant="outline"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground hover:scale-105 transition-all shadow-lg hover:shadow-xl"
+              asChild
+            >
               <Link href="/articles">Ver Todos os Artigos</Link>
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {recentArticles.map((article) => (
-              <Card key={article.id} className="hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="text-sm text-muted-foreground mb-2">
-                    {article.year}
+              <Card
+                key={article.id}
+                className="group relative overflow-hidden hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-2 hover:border-primary/50 bg-card/80 backdrop-blur-sm"
+              >
+                {/* Decorative gradient */}
+                <div className="absolute top-0 left-0 right-0 h-1 bg-linear-to-r from-primary via-accent to-secondary"></div>
+
+                {/* Hover overlay */}
+                <div className="absolute inset-0 bg-linear-to-br from-primary/5 via-transparent to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                <CardHeader className="relative pb-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <Badge variant="secondary" className="text-xs">
+                      {article.year}
+                    </Badge>
+                    <Microscope className="w-5 h-5 text-primary/60 group-hover:text-primary group-hover:rotate-12 transition-all" />
                   </div>
-                  <CardTitle className="text-xl leading-tight">
+                  <CardTitle className="text-xl font-bold leading-tight group-hover:text-primary transition-colors line-clamp-3">
                     {article.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
-                  <CardDescription className="mb-4">
-                    <span className="font-semibold">Autores:</span> {article.authors}
-                  </CardDescription>
-                  <CardDescription className="mb-4">
-                    <span className="font-semibold">Revista:</span> {article.journal}
-                  </CardDescription>
+                <CardContent className="relative space-y-4">
+                  <div className="space-y-2">
+                    <div className="flex items-start gap-2">
+                      <Users className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                      <CardDescription className="text-sm">
+                        {article.authors}
+                      </CardDescription>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <GraduationCap className="w-4 h-4 text-muted-foreground mt-0.5 shrink-0" />
+                      <CardDescription className="text-sm">
+                        {article.journal}
+                      </CardDescription>
+                    </div>
+                  </div>
                   <Link
                     href={article.link}
-                    className="text-primary hover:underline inline-flex items-center gap-1"
+                    className="inline-flex items-center gap-2 text-primary hover:gap-3 font-medium text-sm transition-all group-hover:underline"
                   >
-                    Leia mais →
+                    Leia mais
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </Link>
                 </CardContent>
               </Card>

@@ -243,3 +243,96 @@ body {
 html {
   font-size: var(--font-size);
 }
+
+/* Custom animations for landing page */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-300 {
+  animation-delay: 0.3s;
+}
+
+.delay-700 {
+  animation-delay: 0.7s;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+/* Smooth section transitions */
+section {
+  transition: background 0.6s ease;
+}
+
+/* Remove any default SVG styling that might cause lines */
+svg {
+  vertical-align: middle;
+}
+
+svg path {
+  outline: none;
+  border: none;
+}
+
+/* Logo color filter - converts black to primary color */
+.logo-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo-svg {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(1458%) hue-rotate(201deg) brightness(91%) contrast(93%);
+  transition: filter 0.3s ease;
+}
+
+.logo-container:hover .logo-svg {
+  filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(1458%) hue-rotate(201deg) brightness(101%) contrast(93%);
+}

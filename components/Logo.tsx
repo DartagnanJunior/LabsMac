@@ -7,20 +7,21 @@ interface LogoProps {
   className?: string;
 }
 
-export default function Logo({ 
-  width = 150, 
+export default function Logo({
+  width = 150,
   height = 54,
-  className 
+  className
 }: LogoProps) {
   return (
-    <Image
-      src="/logo.svg"
-      alt="LabsMac Logo"
-      width={width}
-      height={height}
-      className={cn(className)}
-      priority
-    />
+    <div className={cn("logo-container", className)}>
+      <Image
+        src="/logo.svg"
+        alt="LabsMac Logo"
+        width={width}
+        height={height}
+        className="logo-svg"
+        priority
+      />
+    </div>
   );
 }
-
