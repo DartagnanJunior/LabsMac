@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Logo from "@/components/Logo";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,9 +31,7 @@ export default function Header() {
           {/* Logo */}
           <div className="shrink-0">
             <Link href="/" className="flex items-center">
-              <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                LabsMac
-              </div>
+              <Logo width={150} height={54} />
             </Link>
           </div>
 
