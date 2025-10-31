@@ -25,7 +25,7 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 dark:bg-gray-900/95 dark:border-gray-800">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -43,11 +43,7 @@ export default function Header() {
                   key={link.name}
                   asChild
                   variant={isActive ? "default" : "ghost"}
-                  className={`transition-all duration-200 ${
-                    isActive 
-                      ? "" 
-                      : "text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white"
-                  }`}
+                  className="transition-all duration-200"
                 >
                   <Link href={link.href}>
                     {link.name}
@@ -76,7 +72,7 @@ export default function Header() {
 
         {isMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
+            <div className="px-2 pt-2 pb-3 space-y-1 bg-background border-t border-border">
               {navigationLinks.map((link) => {
                 const isActive = pathname === link.href;
                 return (
@@ -84,11 +80,7 @@ export default function Header() {
                     key={link.name}
                     asChild
                     variant={isActive ? "default" : "ghost"}
-                    className={`w-full justify-start transition-all duration-200 ${
-                      isActive 
-                        ? "" 
-                        : "text-gray-700 hover:text-gray-900 hover:bg-gray-50 dark:text-gray-300 dark:hover:text-white dark:hover:bg-gray-800"
-                    }`}
+                    className="w-full justify-start transition-all duration-200"
                     onClick={() => setIsMenuOpen(false)}
                   >
                     <Link href={link.href}>
