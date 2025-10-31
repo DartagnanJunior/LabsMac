@@ -4,6 +4,11 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Renders a responsive table wrapped in a horizontally scrollable container.
+ *
+ * @returns A JSX element containing a <table> with composed classes inside a scrollable container div
+ */
 function Table({ className, ...props }: React.ComponentProps<"table">) {
   return (
     <div
@@ -19,6 +24,11 @@ function Table({ className, ...props }: React.ComponentProps<"table">) {
   )
 }
 
+/**
+ * Renders a table header section with bottom borders applied to each row.
+ *
+ * @returns The rendered `<thead>` element with row bottom-border styling and any passed props applied.
+ */
 function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   return (
     <thead
@@ -29,6 +39,13 @@ function TableHeader({ className, ...props }: React.ComponentProps<"thead">) {
   )
 }
 
+/**
+ * Renders a table body element with default styling and composed classes.
+ *
+ * @param className - Additional CSS classes to merge with the component's default classes
+ * @param props - Additional props are forwarded to the underlying `<tbody>` element
+ * @returns A `<tbody>` element with merged classes and forwarded props
+ */
 function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
   return (
     <tbody
@@ -39,6 +56,11 @@ function TableBody({ className, ...props }: React.ComponentProps<"tbody">) {
   )
 }
 
+/**
+ * Renders a styled table footer (<tfoot>) element.
+ *
+ * @returns The `<tfoot>` element with a muted background, top border, medium font weight, and adjusted last-row border behavior; forwards any provided `tfoot` props (including `className`).
+ */
 function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   return (
     <tfoot
@@ -52,6 +74,11 @@ function TableFooter({ className, ...props }: React.ComponentProps<"tfoot">) {
   )
 }
 
+/**
+ * Renders a table row element with default interactive, selected-state, and border styling.
+ *
+ * @returns A <tr> element with composed `className` and all passed props forwarded.
+ */
 function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   return (
     <tr
@@ -65,6 +92,12 @@ function TableRow({ className, ...props }: React.ComponentProps<"tr">) {
   )
 }
 
+/**
+ * Renders a table header cell with default typography, spacing, and checkbox alignment adjustments.
+ *
+ * @param className - Additional CSS classes to append to the component's default classes
+ * @returns The rendered `<th>` element with composed classes and forwarded props
+ */
 function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   return (
     <th
@@ -78,6 +111,11 @@ function TableHead({ className, ...props }: React.ComponentProps<"th">) {
   )
 }
 
+/**
+ * Renders a table data cell (<td>) with padding, vertical alignment, no-wrap whitespace, and checkbox-specific layout adjustments.
+ *
+ * @returns The rendered `<td>` element with composed classes and forwarded props.
+ */
 function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   return (
     <td
@@ -91,6 +129,13 @@ function TableCell({ className, ...props }: React.ComponentProps<"td">) {
   )
 }
 
+/**
+ * Renders a table caption element with muted styling and spacing.
+ *
+ * The component outputs a <caption> element styled with muted foreground color, top margin, and small text size, and forwards any additional props to the underlying element.
+ *
+ * @returns A `<caption>` element with the component's styling and forwarded props.
+ */
 function TableCaption({
   className,
   ...props

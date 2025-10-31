@@ -11,6 +11,14 @@ import { DayButton, DayPicker, getDefaultClassNames } from "react-day-picker"
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 
+/**
+ * Render a styled DayPicker calendar with project-specific class names, navigation controls, and a custom day button.
+ *
+ * @param showOutsideDays - Whether to display days from adjacent months (default: `true`).
+ * @param captionLayout - Layout for the month caption; commonly `"label"` or `"dropdown"` (default: `"label"`).
+ * @param buttonVariant - Button variant used for the previous/next navigation controls (default: `"ghost"`).
+ * @returns A DayPicker React element configured with the component's custom classNames, formatters, and component overrides.
+ */
 function Calendar({
   className,
   classNames,
@@ -175,6 +183,17 @@ function Calendar({
   )
 }
 
+/**
+ * Renders a calendar day as a themed icon button that reflects selection, range, and focus state.
+ *
+ * Renders a Button configured for use as DayPicker's DayButton and exposes day and range state through
+ * data attributes (e.g., `data-day`, `data-range-start`, `data-selected-single`) so styles can target
+ * selected, range-start, range-end, range-middle, and focused states.
+ *
+ * @param day - The DayPicker day object for the cell; used to populate `data-day` and accessibility context.
+ * @param modifiers - A map of DayPicker modifier flags (for example: `selected`, `range_start`, `range_end`, `range_middle`, `focused`) that determine the emitted data attributes and focus behavior.
+ * @returns A React element rendering the calendar day as a themed, focus-managing icon button with data attributes representing its state.
+ */
 function CalendarDayButton({
   className,
   day,

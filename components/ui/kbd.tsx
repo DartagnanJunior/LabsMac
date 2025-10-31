@@ -1,5 +1,12 @@
 import { cn } from "@/lib/utils"
 
+/**
+ * Renders a styled keyboard-key element that applies consistent theming and contextual variants.
+ *
+ * @param className - Additional CSS class names to merge with the component's default classes.
+ * @param props - Other props forwarded to the rendered `<kbd>` element (e.g., event handlers, ARIA attributes).
+ * @returns A `<kbd>` React element with default keyboard-key styling, `data-slot="kbd"`, and any provided props applied.
+ */
 function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   return (
     <kbd
@@ -15,6 +22,13 @@ function Kbd({ className, ...props }: React.ComponentProps<"kbd">) {
   )
 }
 
+/**
+ * Groups multiple keyboard key visuals inline with spacing.
+ *
+ * @param className - Additional CSS class names to merge with the component's layout classes
+ * @param props - Additional attributes and event handlers passed to the rendered element
+ * @returns A <kbd> element configured as an inline-flex container for grouping keyboard keys
+ */
 function KbdGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <kbd

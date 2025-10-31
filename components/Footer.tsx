@@ -1,6 +1,14 @@
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
 
+/**
+ * Render the site footer with lab branding, quick navigation links, and contact information.
+ *
+ * Displays LabSMaC name and description, location, quick links (Sobre Nós, Serviços, Equipe, Artigos),
+ * contact entries (email and phone), and footer utility links. The copyright year is rendered dynamically.
+ *
+ * @returns A JSX footer element containing LabSMaC branding, quick navigation links, contact info, and copyright/utility links.
+ */
 export default function Footer() {
   return (
     <footer className="bg-card border-t border-border">
@@ -83,4 +91,3 @@ export default function Footer() {
     </footer>
   );
 }
-

@@ -13,6 +13,14 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 
+/**
+ * Render the LabSMaC homepage composed of hero, services, collaboration CTA, and latest publications sections.
+ *
+ * This component uses in-file mock data for `services` and `recentArticles` to populate the services grid and article cards.
+ * It builds a responsive, interactive layout with CTA links for navigation.
+ *
+ * @returns A JSX element containing the complete homepage UI (hero, services, collaboration CTA, and latest articles).
+ */
 export default function Home() {
   // Mock data for articles - replace with real data laterß
   const recentArticles = [

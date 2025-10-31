@@ -8,6 +8,11 @@ import {
 import { cn } from "@/lib/utils"
 import { Button, buttonVariants } from "@/components/ui/button"
 
+/**
+ * Render a navigation container for pagination controls.
+ *
+ * @returns A <nav> element with role="navigation", aria-label="pagination", data-slot="pagination", and merged `className` applied.
+ */
 function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   return (
     <nav
@@ -20,6 +25,11 @@ function Pagination({ className, ...props }: React.ComponentProps<"nav">) {
   )
 }
 
+/**
+ * Renders a ul container for pagination items.
+ *
+ * @returns A `ul` element with `data-slot="pagination-content"`, a flex row layout and gap, and any additional `className` and props merged onto the element.
+ */
 function PaginationContent({
   className,
   ...props
@@ -33,6 +43,14 @@ function PaginationContent({
   )
 }
 
+/**
+ * Renders a list item used as a pagination item.
+ *
+ * The component outputs an `<li>` with `data-slot="pagination-item"` and forwards all received props to the element.
+ *
+ * @param props - Props forwarded to the underlying `<li>` element.
+ * @returns The rendered pagination list item element.
+ */
 function PaginationItem({ ...props }: React.ComponentProps<"li">) {
   return <li data-slot="pagination-item" {...props} />
 }
@@ -42,6 +60,15 @@ type PaginationLinkProps = {
 } & Pick<React.ComponentProps<typeof Button>, "size"> &
   React.ComponentProps<"a">
 
+/**
+ * Renders an anchor element styled and annotated as a pagination link.
+ *
+ * @param className - Additional CSS class names to apply to the link
+ * @param isActive - When `true`, marks the link as the current page (sets `aria-current="page"` and applies active styling)
+ * @param size - Button size variant to use for styling (default: `"icon"`)
+ * @param props - Additional props passed through to the underlying `<a>` element
+ * @returns The rendered `<a>` element configured for use as a pagination control
+ */
 function PaginationLink({
   className,
   isActive,
@@ -65,6 +92,13 @@ function PaginationLink({
   )
 }
 
+/**
+ * Renders a pagination control configured to navigate to the previous page.
+ *
+ * The control includes a left chevron icon and a "Previous" label that is hidden on small screens. It sets an `aria-label` of "Go to previous page" and applies default sizing and spacing; additional props and className are forwarded to the underlying link.
+ *
+ * @returns A React element representing the previous-page pagination link.
+ */
 function PaginationPrevious({
   className,
   ...props
@@ -82,6 +116,15 @@ function PaginationPrevious({
   )
 }
 
+/**
+ * Renders the pagination "Next" control.
+ *
+ * The link includes a right chevron and a "Next" label (label hidden on small screens), sets
+ * an accessible label of "Go to next page", defaults the size to "default", and forwards any
+ * additional props to the underlying PaginationLink.
+ *
+ * @returns A PaginationLink element configured as the next-page control
+ */
 function PaginationNext({
   className,
   ...props
@@ -99,6 +142,13 @@ function PaginationNext({
   )
 }
 
+/**
+ * Renders a non-interactive ellipsis indicator for pagination.
+ *
+ * The element visually displays a horizontal-dots icon and includes a screen-reader-only label "More pages". It is marked with `aria-hidden` and `data-slot="pagination-ellipsis"`.
+ *
+ * @returns A span element used as a non-interactive pagination ellipsis.
+ */
 function PaginationEllipsis({
   className,
   ...props

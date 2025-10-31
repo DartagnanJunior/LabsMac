@@ -5,6 +5,13 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 import { Separator } from "@/components/ui/separator"
 
+/**
+ * Renders a vertical list wrapper for grouping item elements.
+ *
+ * @param className - Optional additional class names to apply to the wrapper
+ * @param props - Additional div props forwarded to the element
+ * @returns A div element with role="list", data-slot="item-group", and combined classes
+ */
 function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -16,6 +23,13 @@ function ItemGroup({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Renders a horizontal separator marked as an item separator.
+ *
+ * Applies a base zero vertical margin and forwards any additional Separator props.
+ *
+ * @returns The rendered Separator element with data-slot="item-separator" and horizontal orientation.
+ */
 function ItemSeparator({
   className,
   ...props
@@ -51,6 +65,12 @@ const itemVariants = cva(
   }
 )
 
+/**
+ * Render a styled list item container with configurable visual variants and optional polymorphic rendering.
+ *
+ * @param asChild - When true, render using a Radix `Slot` to inherit the parent's element type; otherwise render a `div`.
+ * @returns A JSX element representing the item, with `data-slot="item"`, `data-variant`, and `data-size` attributes and classes applied from the variant system.
+ */
 function Item({
   className,
   variant = "default",
@@ -88,6 +108,13 @@ const itemMediaVariants = cva(
   }
 )
 
+/**
+ * Renders the media area for an Item with variant-based styling.
+ *
+ * @param className - Additional CSS classes to apply to the media container
+ * @param variant - Visual variant to apply; one of `"default"`, `"icon"`, or `"image"`
+ * @returns A div element used as the item's media container
+ */
 function ItemMedia({
   className,
   variant = "default",
@@ -103,6 +130,12 @@ function ItemMedia({
   )
 }
 
+/**
+ * Renders the main content area for an Item with flexible vertical layout and spacing.
+ *
+ * @param props - Standard div props forwarded to the container. The `className` prop, if provided, is merged with the component's default classes.
+ * @returns A div element that serves as the item's content container, styled with flex layout and gap.
+ */
 function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -116,6 +149,11 @@ function ItemContent({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Renders the title area for an item with preset layout and typography styles.
+ *
+ * @returns A div element serving as the item's title container with `data-slot="item-title"`.
+ */
 function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -129,6 +167,13 @@ function ItemTitle({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Render a paragraph element styled for an item's descriptive text and link formatting.
+ *
+ * Forwards any remaining <p> props to the underlying element.
+ *
+ * @returns A paragraph element pre-styled for item descriptions.
+ */
 function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
   return (
     <p
@@ -143,6 +188,12 @@ function ItemDescription({ className, ...props }: React.ComponentProps<"p">) {
   )
 }
 
+/**
+ * Renders a horizontal container for action controls associated with an item.
+ *
+ * @param className - Optional additional class names to apply to the container
+ * @returns A div element that aligns children horizontally and spaces them as item actions
+ */
 function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -153,6 +204,12 @@ function ItemActions({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Renders the header row for an item with horizontal layout and space-between alignment.
+ *
+ * @param className - Additional CSS classes to merge with the component's base classes
+ * @returns A div element that serves as the item's header
+ */
 function ItemHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -166,6 +223,11 @@ function ItemHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * Footer row for an item providing horizontal layout with space-between alignment.
+ *
+ * @returns A `div` element that serves as the item's footer, arranged horizontally with centered cross-axis alignment, gap spacing, and customizable via `className`.
+ */
 function ItemFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div

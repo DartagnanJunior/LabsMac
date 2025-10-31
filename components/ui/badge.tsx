@@ -25,6 +25,14 @@ const badgeVariants = cva(
   }
 )
 
+/**
+ * Renders a styled badge element with selectable visual variants.
+ *
+ * @param variant - Visual variant to apply (e.g., "default", "secondary", "destructive", "outline")
+ * @param asChild - When true, renders the badge using a Radix Slot so the caller's child element is used instead of a `span`
+ * @param props - Additional HTML span attributes that are forwarded to the rendered element
+ * @returns A `span` (or the provided child element when `asChild` is true) with badge classes applied
+ */
 function Badge({
   className,
   variant,

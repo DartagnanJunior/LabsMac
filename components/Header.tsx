@@ -7,6 +7,11 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "@/components/Logo";
 
+/**
+ * Renders the site's responsive header with a logo, desktop navigation, and a collapsible mobile menu.
+ *
+ * @returns The header JSX element containing the logo, navigation links (with active-link highlighting), and a toggleable mobile menu.
+ */
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const pathname = usePathname();
