@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# LabsMac
 
-## Getting Started
+Landing page for the LabsMac materials science lab. Built as a Next.js App Router app with a focused, component-driven UI.
 
-First, run the development server:
+## Tech stack
+- Next.js 16 (App Router)
+- React 19 + TypeScript
+- Tailwind CSS 4
+- shadcn/ui + Radix UI + lucide-react
+- react-hook-form + zod
 
+## Getting started
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
+- `npm run dev` - start dev server
+- `npm run build` - production build
+- `npm run start` - start production server
+- `npm run lint` - run ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
+- `src/app` - routes, layout, and global styles
+- `src/components` - app components
+- `src/components/ui` - shadcn/ui components
+- `src/hooks` - shared React hooks
+- `src/lib` - utilities and shared logic
+- `public` - static assets
+- `prompts` - LLM usage rules
 
-## Learn More
+## LLM workflow
+All LLMs must follow the rules in `prompts/STRATEGY.md` and the relevant domain rules:
+- Frontend: `prompts/frontend.md`
+- Backend: `prompts/backend.md`
 
-To learn more about Next.js, take a look at the following resources:
+If a change does not fit the existing rules, add the minimal rule update to the prompts folder first.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes
+- UI is Tailwind-first and reuses shadcn/ui building blocks.
+- Keep components small and accessible.
